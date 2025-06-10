@@ -3,3 +3,29 @@
 @tailwind utilities;
 
 /* You can add global styles to this file, and also import other style files */
+// ... โค้ด @tailwind ...
+
+:root {
+    /* Light Theme */
+    --color-black: black;
+    --color-background: #ffffff; /* white */
+    --color-surface: #f9fafb;    /* gray-50 */
+    --color-text-primary: #111827;   /* gray-900 */
+    --color-text-secondary: #6b7280; /* gray-500 */
+    --color-primary: #3b82f6;      /* blue-500 */
+  }
+  
+  html.dark {
+    /* Dark Theme */
+    --color-black: black;
+    --color-background: #111827; /* gray-900 */
+    --color-surface: #1f2937;    /* gray-800 */
+    --color-text-primary: #f9fafb;   /* gray-50 */
+    --color-text-secondary: #9ca3af; /* gray-400 */
+    --color-primary: #60a5fa;      /* blue-400 */
+  }
+  
+  /* (แนะนำ) เพิ่ม class เพื่อให้ body มีสีพื้นหลังตาม Theme */
+  body {
+    @apply bg-black bg-background text-text-primary;
+  }

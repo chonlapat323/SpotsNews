@@ -1,11 +1,18 @@
 <nav
-  class="fixed top-0 left-0 w-full bg-white border-b border-gray-200 z-50 shadow"
+  class="fixed top-0 left-0 w-full bg-white border-b border-gray-200 z-50 shadow dark:bg-background"
 >
   <div class="container mx-auto flex items-center justify-between px-4 py-2.5">
     <!-- Logo -->
     <a href="/" class="text-xl font-bold text-blue-600">SportNews</a>
+
+    <button
+      (click)="toggleTheme()"
+      class="px-4 py-2 rounded bg-gray-200 dark:bg-gray-700 dark:text-white"
+    >
+      Toggle Theme
+    </button>
     <!-- Hamburger (Mobile) -->
-    <button class="md:hidden p-2" (click)="toggleMenu()">
+    <button class="md:hidden p-2 dark:text-white" (click)="toggleMenu()">
       <span class="sr-only">Open main menu</span>
       <svg
         class="w-6 h-6"
@@ -24,19 +31,23 @@
     <!-- Menu (Desktop) -->
     <ul class="hidden md:flex space-x-8">
       <li>
-        <a href="#" class="text-gray-700 hover:text-blue-600">ติดต่อเรา</a>
+        <a href="#" class="text-gray-700 hover:text-blue-600 dark:text-white"
+          >ติดต่อเรา</a
+        >
       </li>
     </ul>
   </div>
   <!-- Slide Menu (Mobile) -->
   <div
-    class="fixed top-0 right-0 h-full w-64 bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out md:hidden flex flex-col"
+    class="dark:bg-gray-900 fixed top-0 right-0 h-full w-64 bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out md:hidden flex flex-col"
     [ngClass]="{'translate-x-0': menuOpen, 'translate-x-full': !menuOpen}"
   >
     <!-- Logo & Close -->
-    <div class="flex items-center justify-between p-4 border-b">
+    <div
+      class="flex items-center justify-between p-4 border-b dark:bg-gray-900"
+    >
       <span class="text-xl font-bold text-blue-600">SportNews</span>
-      <button (click)="toggleMenu()">
+      <button class="dark:text-white" (click)="toggleMenu()">
         <svg
           class="w-6 h-6"
           fill="none"
@@ -53,17 +64,19 @@
       </button>
     </div>
     <!-- Menu List -->
-    <ul class="flex flex-col space-y-2 p-6">
+    <ul class="flex flex-col space-y-2 p-6 dark:bg-gray-900">
       <li>
         <a
           href="#"
-          class="block py-2 px-3 rounded-lg text-lg font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition"
+          class="block py-2 px-3 rounded-lg text-lg font-medium text-gray-700 hover:bg-blue-50 dark:hover:bg-gray-800 hover:text-blue-600 transition dark:text-white"
           >ติดต่อเรา</a
         >
       </li>
     </ul>
     <!-- Optional: Footer หรือ social icons -->
-    <div class="mt-auto p-4 border-t text-xs text-gray-400 text-center">
+    <div
+      class="mt-auto p-4 border-t text-xs text-gray-400 text-center dark:bg-gray-900"
+    >
       © 2024 SportNews
     </div>
   </div>
