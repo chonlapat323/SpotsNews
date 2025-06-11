@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       colors: {
         // สร้างชุดสีใหม่โดยอ้างอิงจาก CSS Variable
+        ccc: "var(--color-ccc)",
         background: "var(--color-background)",
         surface: "var(--color-surface)",
         primary: "var(--color-primary)",
