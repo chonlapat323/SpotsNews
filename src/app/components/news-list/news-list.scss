@@ -1,0 +1,32 @@
+.list-item-container {
+  display: flex;
+  align-items: flex-start; // Can be 'center' if you prefer vertical centering
+
+  .list-item-image-wrapper {
+    flex-shrink: 0; // Prevent image from shrinking
+    width: 200px; // Fixed width for the image
+    height: 150px; // Fixed height for the image
+    margin-right: 1.5rem; // Space between image and text
+  }
+
+  .list-item-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; // Ensure image covers the area without distortion
+    border-radius: 0.5rem; // Optional: rounded corners for the image
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .list-item-container {
+    flex-direction: column;
+
+    .list-item-image-wrapper {
+      width: 100%;
+      height: 200px; // Adjust height for smaller screens
+      margin-right: 0;
+      margin-bottom: 1rem; // Add space below image when stacked
+    }
+  }
+}

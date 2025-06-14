@@ -7,7 +7,7 @@
 
 :root {
     /* Light Theme */
-    --color-black: black;
+    --olor-ccc: rgb(30, 27, 27);
     --color-background: #ffffff; /* white */
     --color-surface: #f9fafb;    /* gray-50 */
     --color-text-primary: #111827;   /* gray-900 */
@@ -17,7 +17,7 @@
   
   html.dark {
     /* Dark Theme */
-    --color-black: black;
+    --color-ccc: rgb(30, 27, 27);
     --color-background: #111827; /* gray-900 */
     --color-surface: #1f2937;    /* gray-800 */
     --color-text-primary: #f9fafb;   /* gray-50 */
@@ -27,5 +27,5 @@
   
   /* (แนะนำ) เพิ่ม class เพื่อให้ body มีสีพื้นหลังตาม Theme */
   body {
-    @apply bg-black bg-background text-text-primary;
+    @apply bg-ccc bg-background text-text-primary;
   }
