@@ -1,0 +1,28 @@
+<div class="slider-container" *ngIf="slides.length > 0">
+  <div
+    class="slide"
+    *ngFor="let slide of slides; let i = index"
+    [ngStyle]="getSlideStyle(i)"
+    [class.exit-left]="i === currentSlide && exitAnimationClass === 'exit-left'"
+    [class.exit-right]="i === currentSlide && exitAnimationClass === 'exit-right'"
+    (mousedown)="onDragStart($event, i)"
+    (touchstart)="onDragStartTouch($event, i)"
+  >
+    <img [src]="slide.url" [alt]="slide.title" draggable="false" />
+  </div>
+
+  <ng-container *ngIf="showControls">
+    <div class="dots-container">
+      <span
+        class="dot"
+        *ngFor="let slide of slides; let i = index"
+        [class.active]="i === currentSlide"
+        (click)="goToSlide(i)"
+      >
+      </span>
+    </div>
+
+    <button class="prev" (click)="prevSlide()">&#10094;</button>
+    <button class="next" (click)="nextSlide()">&#10095;</button>
+  </ng-container>
+</div>

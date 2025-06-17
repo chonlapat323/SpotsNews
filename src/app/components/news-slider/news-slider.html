@@ -1,0 +1,44 @@
+<div class="slider-container" *ngIf="slides.length > 0">
+  <!-- 1. ส่วนของการวนลูปและการผูก Event ยังคงเหมือนเดิมทั้งหมด -->
+  <div
+    class="slide"
+    *ngFor="let slide of slides; let i = index"
+    [ngStyle]="getSlideStyle(i)"
+    [class.exit-left]="i === currentSlide && exitAnimationClass === 'exit-left'"
+    [class.exit-right]="i === currentSlide && exitAnimationClass === 'exit-right'"
+    (mousedown)="onDragStart($event, i)"
+    (touchstart)="onDragStartTouch($event, i)"
+  >
+    <!-- 2. (สำคัญ) โครงสร้างภายในของการ์ดข่าว -->
+    <a
+      [href]="'/news/' + slide.id"
+      class="news-card-link"
+      draggable="false"
+      (click)="onCardClick($event)"
+    >
+      <!-- รูปภาพข่าว -->
+      <img [src]="slide.imageUrl" [alt]="slide.title" draggable="false" />
+
+      <!-- เนื้อหาข่าวที่วางซ้อนบนรูปภาพ -->
+      <div class="news-content">
+        <span class="news-category">{{ slide.category }}</span>
+        <h3 class="news-title">{{ slide.title }}</h3>
+      </div>
+    </a>
+  </div>
+
+  <!-- ใช้ *ngIf ครอบส่วนควบคุมทั้งหมด -->
+  <ng-container *ngIf="showControls">
+    <div class="dots-container">
+      <span
+        class="dot"
+        *ngFor="let slide of slides; let i = index"
+        [class.active]="i === currentSlide"
+        (click)="goToSlide(i)"
+      >
+      </span>
+    </div>
+  </ng-container>
+  <button class="prev" (click)="prevSlide()">&#10094;</button>
+  <button class="next" (click)="nextSlide()">&#10095;</button>
+</div>

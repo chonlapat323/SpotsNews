@@ -8,4 +8,68 @@
   [sideNews2]="{ imageUrl: 'https://www.siamsport.co.th/static/83006/856x452.webp', title: 'Premier League title race set for dramatic finale', tag: 'พรีเมียร์ลีก', date: '6/9/2025'}"
 ></app-hero-section>
 
+<!-- =================================================================
+LATEST NEWS SECTION
+================================================================== -->
+<section class="latest-news-section mt-8">
+  <div class="container mx-auto">
+    <h2 class="text-3xl font-bold mb-6 text-gray-800 dark:text-white">
+      ข่าวล่าสุด
+    </h2>
+
+    <ng-container *ngIf="latestArticles$ | async as articles">
+      <app-news-list [articles]="articles" [layout]="NewsLayout.MAGAZINE">
+        <!-- ★ คุณสามารถเปลี่ยน 'grid' เป็น 'list' หรือ 'magazine' ได้ตรงนี้ -->
+      </app-news-list>
+    </ng-container>
+  </div>
+</section>
+
 <app-category-news></app-category-news>
+
+<!-- =================================================================
+QUALITY WEBSITE SECTION
+================================================================== -->
+<section class="quality-website-section my-8">
+  <div class="container mx-auto">
+    <div class="flex flex-wrap items-center">
+      <div class="w-full md:w-1/2">
+        <app-image-slider [slides]="slides"></app-image-slider>
+      </div>
+      <div class="w-full md:w-1/2">
+        <h2 class="text-3xl font-bold mb-4 text-gray-800 dark:text-white">
+          เว็บไซต์คุณภาพสูง ตอบโจทย์ทุกธุรกิจ
+        </h2>
+        <p class="text-gray-600 dark:text-gray-300 mb-4">
+          เรามุ่งเน้นการออกแบบที่สะท้อนตัวตนของแบรนด์คุณ พร้อมผสมผสานความสวยงาม
+          และการใช้งานที่ลงตัว ทุกเว็บไซต์ที่เราสร้างรองรับการใช้งานบนทุกอุปกรณ์
+          ไม่ว่าจะเป็นมือถือ แท็บเล็ต หรือคอมพิวเตอร์
+          อีกทั้งยังมีโครงสร้างที่รองรับการทำ SEO
+          ช่วยเพิ่มโอกาสให้ธุรกิจของคุณเติบโตบนโลกออนไลน์
+          เว็บไซต์ของเราไม่ได้มีดีแค่ความสวยงาม
+          แต่ยังเต็มไปด้วยฟังก์ชันที่ตอบโจทย์การใช้งานของธุรกิจ
+          ไม่ว่าจะเป็นระบบขายสินค้าออนไลน์ ระบบจองเวลา
+          หรือฟีเจอร์พิเศษที่ออกแบบมาเฉพาะสำหรับธุรกิจของคุณ
+        </p>
+        <p class="text-gray-600 dark:text-gray-300">
+          ให้เราเป็นส่วนหนึ่งในการยกระดับธุรกิจของคุณด้วยเว็บไซต์คุณภาพ
+          ที่สร้างความแตกต่างอย่างแท้จริง
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================================================================
+HOT NEWS SLIDER SECTION
+================================================================== -->
+<section class="hot-news-slider-section my-16">
+  <div class="container mx-auto text-center">
+    <h2 class="text-3xl font-bold mb-8 text-gray-800 dark:text-white">
+      ข่าวน่าสนใจ
+    </h2>
+    <app-news-slider
+      [slides]="(latestArticles$ | async) || []"
+    ></app-news-slider>
+  </div>
+</section>

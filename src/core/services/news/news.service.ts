@@ -92,4 +92,27 @@ export class NewsService {
     const article = allArticles.find((a) => a.id === articleId);
     return of(article).pipe(delay(300));
   }
+
+  /**
+   * ดึงข่าวล่าสุดทั้งหมดจากทุกหมวดหมู่
+   * @param limit จำนวนข่าวสูงสุดที่ต้องการ
+   * @returns Observable ของอาร์เรย์ข่าวล่าสุด
+   */
+  getLatestArticles(limit: number): Observable<NewsArticle[]> {
+    // 1. รวบรวมข่าวทั้งหมดจาก MOCK_NEWS_CATEGORIES
+    const allArticles = MOCK_NEWS_CATEGORIES.flatMap(
+      (category) => category.articles
+    );
+
+    // 2. เรียงข่าวตามวันที่จากใหม่ไปเก่า
+    allArticles.sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
+
+    // 3. ตัดอาร์เรย์ตามจำนวน limit ที่ระบุ
+    const limitedArticles = allArticles.slice(0, limit);
+
+    // 4. คืนค่าเป็น Observable
+    return of(limitedArticles).pipe(delay(300)); // ใส่ delay เพื่อจำลองการโหลด
+  }
 }

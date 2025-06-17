@@ -40,10 +40,9 @@
   <!-- ข่าวรอง (ขวา) -->
   <div class="md:w-1/3 w-full flex flex-col gap-2">
     <!-- ข่าวรอง 1 -->
-    <div
+    <!-- <div
       class="cursor-pointer group overflow-hidden shadow bg-white flex flex-col h-full dark:bg-ccc"
     >
-      <!-- รูป -->
       <div class="h-32 w-full">
         <img
           [src]="sideNews1.imageUrl"
@@ -51,8 +50,6 @@
           class="inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
       </div>
-
-      <!-- เนื้อหาข่าว -->
       <div class="flex-1 flex flex-col justify-between p-3">
         <h3 class="text-base font-bold leading-tight drak:text-white">
           {{ sideNews1.title }}
@@ -70,7 +67,11 @@
           </span>
         </div>
       </div>
-    </div>
+    </div> -->
+    <app-news-slider
+      [slides]="(latestArticles$ | async) || []"
+      [showControls]="false"
+    ></app-news-slider>
 
     <!-- ข่าวรอง 2 -->
     <div

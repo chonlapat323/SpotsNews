@@ -1,11 +1,11 @@
 <!-- ใช้ *ngIf กับ async pipe เพื่อรอให้ data$ ส่งข้อมูลมาก่อน -->
 <div *ngIf="data$ | async as data; else loading">
-  <div class="container mx-auto p-4">
+  <div class="container mx-auto py-4">
     <!-- ============================================= -->
     <!--  กรณีที่ 1: แสดงหมวดหมู่ทั้งหมด (All Categories) -->
     <!-- ============================================= -->
     <div *ngIf="data.pageType === 'all_categories'">
-      <h1 class="text-3xl font-bold mb-8 text-center">ข่าวทั้งหมด</h1>
+      <h1 class="text-3xl font-bold mb-8 text-left">ข่าวทั้งหมด</h1>
 
       <!-- ลูปนอก: วนลูปเพื่อสร้าง Section ของแต่ละหมวดหมู่ -->
       <section *ngFor="let category of data.categories" class="mb-12">
@@ -23,7 +23,6 @@
         </div>
 
         <!-- ลูปใน (ผ่าน Component): ส่งข่าวของหมวดหมู่นั้นๆ เข้าไป -->
-        {{category.style}}
         <app-news-list
           [articles]="category.articles"
           [layout]="category.style"
